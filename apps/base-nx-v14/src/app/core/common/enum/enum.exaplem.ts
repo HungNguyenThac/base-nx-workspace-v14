@@ -1,0 +1,3 @@
+export enum ENUM_EXAMPLE {
+  ENUM_EXAMPLE = "ENUM_EXAMPLE",
+}

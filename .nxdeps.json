@@ -1,0 +1,972 @@
+{
+  "graph": {
+    "nodes": {
+      "base-nx-v14-e2e": {
+        "name": "base-nx-v14-e2e",
+        "type": "e2e",
+        "data": {
+          "root": "apps/base-nx-v14-e2e",
+          "$schema": "../../node_modules/nx/schemas/project-schema.json",
+          "sourceRoot": "apps/base-nx-v14-e2e/src",
+          "projectType": "application",
+          "targets": {
+            "e2e": {
+              "executor": "@nrwl/cypress:cypress",
+              "options": {
+                "cypressConfig": "apps/base-nx-v14-e2e/cypress.config.ts",
+                "devServerTarget": "base-nx-v14:serve:development",
+                "testingType": "e2e"
+              },
+              "configurations": {
+                "production": {
+                  "devServerTarget": "base-nx-v14:serve:production"
+                }
+              },
+              "inputs": [
+                "default",
+                "^production"
+              ]
+            },
+            "lint": {
+              "executor": "@nrwl/linter:eslint",
+              "outputs": [
+                "{options.outputFile}"
+              ],
+              "options": {
+                "lintFilePatterns": [
+                  "apps/base-nx-v14-e2e/**/*.{js,ts}"
+                ]
+              },
+              "inputs": [
+                "default",
+                "{workspaceRoot}/.eslintrc.json"
+              ]
+            }
+          },
+          "tags": [],
+          "implicitDependencies": [
+            "base-nx-v14"
+          ],
+          "files": [
+            {
+              "file": "apps/base-nx-v14-e2e/.eslintrc.json",
+              "hash": "4c5989b23b5aa8cc7aba2a07d1ae7daee19c1555"
+            },
+            {
+              "file": "apps/base-nx-v14-e2e/cypress.config.ts",
+              "hash": "22f7c84eb637d4f23447fcb59dee130dd25b2de0",
+              "deps": [
+                "npm:cypress",
+                "npm:@nrwl/cypress"
+              ]
+            },
+            {
+              "file": "apps/base-nx-v14-e2e/project.json",
+              "hash": "24f32ddaad8cebd4a20a041b06360da47dc15549"
+            },
+            {
+              "file": "apps/base-nx-v14-e2e/src/e2e/app.cy.ts",
+              "hash": "dd009932014f725a816f4384d58c6504456007d9"
+            },
+            {
+              "file": "apps/base-nx-v14-e2e/src/fixtures/example.json",
+              "hash": "294cbed6ce9e0b948b787452e8676aee486cb3be"
+            },
+            {
+              "file": "apps/base-nx-v14-e2e/src/support/app.po.ts",
+              "hash": "32934246969c2ecb827ac05677785933a707a54d"
+            },
+            {
+              "file": "apps/base-nx-v14-e2e/src/support/commands.ts",
+              "hash": "310f1fa0e043ffebbbcf575c5a4d17f13a6b14d6"
+            },
+            {
+              "file": "apps/base-nx-v14-e2e/src/support/e2e.ts",
+              "hash": "3d469a6b6cf31eb66117d73e278bcf74f398f1db"
+            },
+            {
+              "file": "apps/base-nx-v14-e2e/tsconfig.json",
+              "hash": "9e27f75c6fadf5f6175f48ca953d551089aef787"
+            }
+          ]
+        }
+      },
+      "base-nx-v14": {
+        "name": "base-nx-v14",
+        "type": "app",
+        "data": {
+          "root": "apps/base-nx-v14",
+          "projectType": "application",
+          "sourceRoot": "apps/base-nx-v14/src",
+          "prefix": "my-project",
+          "targets": {
+            "build": {
+              "executor": "@angular-devkit/build-angular:browser",
+              "outputs": [
+                "{options.outputPath}"
+              ],
+              "options": {
+                "outputPath": "dist/apps/base-nx-v14",
+                "index": "apps/base-nx-v14/src/index.html",
+                "main": "apps/base-nx-v14/src/main.ts",
+                "polyfills": "apps/base-nx-v14/src/polyfills.ts",
+                "tsConfig": "apps/base-nx-v14/tsconfig.app.json",
+                "inlineStyleLanguage": "scss",
+                "assets": [
+                  "apps/base-nx-v14/src/favicon.ico",
+                  "apps/base-nx-v14/src/assets"
+                ],
+                "styles": [
+                  "apps/base-nx-v14/src/styles.scss"
+                ],
+                "scripts": []
+              },
+              "configurations": {
+                "production": {
+                  "budgets": [
+                    {
+                      "type": "initial",
+                      "maximumWarning": "500kb",
+                      "maximumError": "1mb"
+                    },
+                    {
+                      "type": "anyComponentStyle",
+                      "maximumWarning": "2kb",
+                      "maximumError": "4kb"
+                    }
+                  ],
+                  "fileReplacements": [
+                    {
+                      "replace": "apps/base-nx-v14/src/environments/environment.ts",
+                      "with": "apps/base-nx-v14/src/environments/environment.prod.ts"
+                    }
+                  ],
+                  "outputHashing": "all"
+                },
+                "development": {
+                  "buildOptimizer": false,
+                  "optimization": false,
+                  "vendorChunk": true,
+                  "extractLicenses": false,
+                  "sourceMap": true,
+                  "namedChunks": true
+                }
+              },
+              "defaultConfiguration": "production",
+              "dependsOn": [
+                "^build"
+              ],
+              "inputs": [
+                "production",
+                "^production"
+              ]
+            },
+            "serve": {
+              "executor": "@angular-devkit/build-angular:dev-server",
+              "configurations": {
+                "production": {
+                  "browserTarget": "base-nx-v14:build:production"
+                },
+                "development": {
+                  "browserTarget": "base-nx-v14:build:development"
+                }
+              },
+              "defaultConfiguration": "development"
+            },
+            "extract-i18n": {
+              "executor": "@angular-devkit/build-angular:extract-i18n",
+              "options": {
+                "browserTarget": "base-nx-v14:build"
+              }
+            },
+            "lint": {
+              "executor": "@nrwl/linter:eslint",
+              "options": {
+                "lintFilePatterns": [
+                  "apps/base-nx-v14/**/*.ts",
+                  "apps/base-nx-v14/**/*.html"
+                ]
+              },
+              "inputs": [
+                "default",
+                "{workspaceRoot}/.eslintrc.json"
+              ]
+            },
+            "test": {
+              "executor": "@nrwl/jest:jest",
+              "outputs": [
+                "coverage/apps/base-nx-v14"
+              ],
+              "options": {
+                "jestConfig": "apps/base-nx-v14/jest.config.ts",
+                "passWithNoTests": true
+              },
+              "inputs": [
+                "default",
+                "^production",
+                "{workspaceRoot}/jest.preset.js"
+              ]
+            }
+          },
+          "tags": [],
+          "files": [
+            {
+              "file": "apps/base-nx-v14/.browserslistrc",
+              "hash": "4f9ac26980c156a3d525267010d5f78144b43519"
+            },
+            {
+              "file": "apps/base-nx-v14/.eslintrc.json",
+              "hash": "ae51c1a135cb2030c732fa292035d06bae42bdf0"
+            },
+            {
+              "file": "apps/base-nx-v14/jest.config.ts",
+              "hash": "d097c16772178a44eb175d9fffa9040a5393984e"
+            },
+            {
+              "file": "apps/base-nx-v14/project.json",
+              "hash": "79020ce0071a0ce70338c4f5067cad6c17873e56"
+            },
+            {
+              "file": "apps/base-nx-v14/src/app/app-routing.module.ts",
+              "hash": "69406b469d59d0200d1cc14e966d31270f72b062",
+              "deps": [
+                "npm:@angular/router"
+              ]
+            },
+            {
+              "file": "apps/base-nx-v14/src/app/app.component.html",
+              "hash": "9a4cb0c5f87dbee26d44a82c6adddcc86f4f4a3a"
+            },
+            {
+              "file": "apps/base-nx-v14/src/app/app.component.scss",
+              "hash": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+            },
+            {
+              "file": "apps/base-nx-v14/src/app/app.component.spec.ts",
+              "hash": "d45bea31ddf7cb7f068ed783d7ed7da8474ee013",
+              "deps": [
+                "npm:@angular/core",
+                "npm:@angular/router"
+              ]
+            },
+            {
+              "file": "apps/base-nx-v14/src/app/app.component.ts",
+              "hash": "2d6fad4a3680b924183d4282483636e9236a56ed",
+              "deps": [
+                "npm:@angular/core",
+                "npm:@ngrx/store",
+                "npm:rxjs",
+                "npm:@angular/common",
+                "npm:@angular/router",
+                "npm:@angular/forms"
+              ]
+            },
+            {
+              "file": "apps/base-nx-v14/src/app/core/common/animations/detail-expand.animation.ts",
+              "hash": "63649a2314bbcafac713797b7af9dfc86e55b7f5",
+              "deps": [
+                "npm:@angular/animations"
+              ]
+            },
+            {
+              "file": "apps/base-nx-v14/src/app/core/common/animations/router.animation.ts",
+              "hash": "ecb81fd6768c227097e130fc4b16d12029c25c37",
+              "deps": [
+                "npm:@angular/animations"
+              ]
+            },
+            {
+              "file": "apps/base-nx-v14/src/app/core/common/constants/config.ts",
+              "hash": "975562d40ca1473c08462005b08ea8b5014f286a"
+            },
+            {
+              "file": "apps/base-nx-v14/src/app/core/common/constants/pages-title.ts",
+              "hash": "fc51b13aa3b352febc8317d19a218f66900a01a2"
+            },
+            {
+              "file": "apps/base-nx-v14/src/app/core/common/constants/permission-constants.ts",
+              "hash": "35a902735885620cf99cdb4666d3d08dd98670cf"
+            },
+            {
+              "file": "apps/base-nx-v14/src/app/core/common/constants/routes-config.ts",
+              "hash": "f846d139501b70398ddeb4004f0c93b1b2a31d25"
+            },
+            {
+              "file": "apps/base-nx-v14/src/app/core/common/enum/enum.exaplem.ts",
+              "hash": "ac59245c11440257479b6a607ac1444ba614f2dc"
+            },
+            {
+              "file": "apps/base-nx-v14/src/app/core/common/providers/custom-preloading-strategy.ts",
+              "hash": "474a9774823c5a1ee1d470f6e35c2c77c1d316b9",
+              "deps": [
+                "npm:@angular/core",
+                "npm:@angular/router",
+                "npm:rxjs"
+              ]
+            },
+            {
+              "file": "apps/base-nx-v14/src/app/core/common/providers/mat-paginator-custom.ts",
+              "hash": "9da82c7542cd9c925371562c7ea52788710ffaae",
+              "deps": [
+                "npm:@angular/core",
+                "npm:@angular/material"
+              ]
+            },
+            {
+              "file": "apps/base-nx-v14/src/app/core/common/utility/index.ts",
+              "hash": "a92d9d71db84945acd57ef844c9891ab75bdcd21"
+            },
+            {
+              "file": "apps/base-nx-v14/src/app/core/core.module.ts",
+              "hash": "2b193f08446c29bf4b127f561cbd59d9481b6e24",
+              "deps": [
+                "npm:@angular/core",
+                "npm:@angular/common",
+                "npm:@ngx-translate/core",
+                "npm:@auth0/angular-jwt",
+                "npm:ngx-toastr",
+                "npm:ngx-permissions"
+              ]
+            },
+            {
+              "file": "apps/base-nx-v14/src/app/core/interceptors/api-http.interceptor.ts",
+              "hash": "d6b7824aeddd012edf7347c8b5ec85ab9197cadf",
+              "deps": [
+                "npm:@angular/core",
+                "npm:@angular/common",
+                "npm:rxjs",
+                "npm:@ngrx/store"
+              ]
+            },
+            {
+              "file": "apps/base-nx-v14/src/app/core/interceptors/handle-errors.interceptor.ts",
+              "hash": "58986fbefabeac1b66d95473b98db4b080075116",
+              "deps": [
+                "npm:@angular/core",
+                "npm:@angular/common",
+                "npm:rxjs",
+                "npm:ngx-toastr",
+                "npm:@angular/router",
+                "npm:@ngrx/store",
+                "npm:@angular/material"
+              ]
+            },
+            {
+              "file": "apps/base-nx-v14/src/app/core/interceptors/index.ts",
+              "hash": "3e084cf3ddb77f2a421df9f7aa2b50fcc7bafa2f"
+            },
+            {
+              "file": "apps/base-nx-v14/src/app/core/interceptors/loading.interceptor.ts",
+              "hash": "cd1498fdfea00cad37abb5e92040d90bb397ed75",
+              "deps": [
+                "npm:@angular/core",
+                "npm:@angular/common",
+                "npm:rxjs"
+              ]
+            },
+            {
+              "file": "apps/base-nx-v14/src/app/core/interceptors/timeout.interceptor.ts",
+              "hash": "df27d4a6574f501ce4e3335ea14fd605e3411e85",
+              "deps": [
+                "npm:@angular/core",
+                "npm:@angular/common",
+                "npm:rxjs"
+              ]
+            },
+            {
+              "file": "apps/base-nx-v14/src/app/core/interceptors/timing.interceptor.ts",
+              "hash": "bc00afc47fee8fa25a05b46e109ce38dab26e309",
+              "deps": [
+                "npm:@angular/core",
+                "npm:@angular/common",
+                "npm:rxjs"
+              ]
+            },
+            {
+              "file": "apps/base-nx-v14/src/app/core/module-import-guard.ts",
+              "hash": "eb87efcfa40f5500bbed6495861683bc3855f31e"
+            },
+            {
+              "file": "apps/base-nx-v14/src/app/core/providers.ts",
+              "hash": "c29357b02ae0e91ea3321ab4d98519bba8c57e9b",
+              "deps": [
+                "npm:@angular/common",
+                "npm:@angular/core",
+                "npm:@angular/material",
+                "npm:@angular/router"
+              ]
+            },
+            {
+              "file": "apps/base-nx-v14/src/app/core/services/auth-guard.service.spec.ts",
+              "hash": "35afd377556f035e07c7f3ea6b1a558e72e325b5",
+              "deps": [
+                "npm:@angular/core"
+              ]
+            },
+            {
+              "file": "apps/base-nx-v14/src/app/core/services/auth-guard.service.ts",
+              "hash": "ca496f5a74ac4f4234c5b27a72fa6c04184077e2",
+              "deps": [
+                "npm:@angular/core",
+                "npm:@angular/router",
+                "npm:@angular/common"
+              ]
+            },
+            {
+              "file": "apps/base-nx-v14/src/app/core/services/auth.service.spec.ts",
+              "hash": "be651f0f0a58e1a4d8446f37163ff828144d8960",
+              "deps": [
+                "npm:@angular/core"
+              ]
+            },
+            {
+              "file": "apps/base-nx-v14/src/app/core/services/auth.service.ts",
+              "hash": "d5f88e0a5bbcb5cfeaad8adb055166006d3da7cf",
+              "deps": [
+                "npm:@angular/core",
+                "npm:@auth0/angular-jwt",
+                "npm:@ngrx/store",
+                "npm:rxjs"
+              ]
+            },
+            {
+              "file": "apps/base-nx-v14/src/app/core/services/loading.service.spec.ts",
+              "hash": "dd3193cc1653435c1c918893971cf06184dd2281",
+              "deps": [
+                "npm:@angular/core"
+              ]
+            },
+            {
+              "file": "apps/base-nx-v14/src/app/core/services/loading.service.ts",
+              "hash": "5f1b91d53f68b33f7c37b4c59da472264619de19",
+              "deps": [
+                "npm:@angular/core",
+                "npm:rxjs"
+              ]
+            },
+            {
+              "file": "apps/base-nx-v14/src/app/core/services/set-browser-title.service.spec.ts",
+              "hash": "330c7af819f5e8979b05e9f96d1d56b144f97211",
+              "deps": [
+                "npm:@angular/core"
+              ]
+            },
+            {
+              "file": "apps/base-nx-v14/src/app/core/services/set-browser-title.service.ts",
+              "hash": "ebc14f028efdc953f6194a28bd826f78bedf96e0",
+              "deps": [
+                "npm:@angular/core",
+                "npm:@angular/router"
+              ]
+            },
+            {
+              "file": "apps/base-nx-v14/src/app/core/services/window-resize.service.spec.ts",
+              "hash": "d93ea0ce7e05741596a274c462ab6f2820059af1",
+              "deps": [
+                "npm:@angular/core"
+              ]
+            },
+            {
+              "file": "apps/base-nx-v14/src/app/core/services/window-resize.service.ts",
+              "hash": "d1e8650293bc0a39ce878c64c6c7a57a799919ab",
+              "deps": [
+                "npm:@angular/core",
+                "npm:rxjs"
+              ]
+            },
+            {
+              "file": "apps/base-nx-v14/src/app/core/store/actions/index.ts",
+              "hash": "20fc95dc544c0c2990224b38218975c1e09dbdd7"
+            },
+            {
+              "file": "apps/base-nx-v14/src/app/core/store/actions/login.actions.ts",
+              "hash": "d608abb13122a2dc7bfe0dca664694a54d81a298",
+              "deps": [
+                "npm:@ngrx/store"
+              ]
+            },
+            {
+              "file": "apps/base-nx-v14/src/app/core/store/core.store.ts",
+              "hash": "469cb76bb19fa7529675ffbbeea10b39c6edb9c3",
+              "deps": [
+                "npm:@angular/core",
+                "npm:@ngrx/router-store",
+                "npm:@ngrx/store",
+                "npm:@ngrx/effects",
+                "npm:@ngrx/store-devtools",
+                "npm:ngrx-store-localstorage"
+              ]
+            },
+            {
+              "file": "apps/base-nx-v14/src/app/core/store/effects/index.ts",
+              "hash": "e77af1b401b86ad288b8c8011f57d8fecd9e9703"
+            },
+            {
+              "file": "apps/base-nx-v14/src/app/core/store/effects/login.effect.ts",
+              "hash": "aa4b15412195947fda5f7c245d33f1cf1a28b8e1",
+              "deps": [
+                "npm:@angular/core",
+                "npm:@angular/router",
+                "npm:@angular/common",
+                "npm:@ngrx/effects",
+                "npm:rxjs",
+                "npm:@ngrx/store",
+                "npm:ngx-toastr",
+                "npm:ngx-permissions"
+              ]
+            },
+            {
+              "file": "apps/base-nx-v14/src/app/core/store/index.ts",
+              "hash": "6617f5735b2d276bfb651017bfcae31bb5f743db"
+            },
+            {
+              "file": "apps/base-nx-v14/src/app/core/store/reducers/index.ts",
+              "hash": "90bf9794257ec67a687569734f54354be2f4c6ec",
+              "deps": [
+                "npm:@ngrx/store",
+                "npm:@ngrx/router-store"
+              ]
+            },
+            {
+              "file": "apps/base-nx-v14/src/app/core/store/reducers/login.reducer.ts",
+              "hash": "0bd273fcc1f9f1fbce79d0116cc75509770c3141",
+              "deps": [
+                "npm:@angular/common",
+                "npm:jwt-decode",
+                "npm:@ngrx/store"
+              ]
+            },
+            {
+              "file": "apps/base-nx-v14/src/app/core/store/reducers/router.reducer.ts",
+              "hash": "051f6c97f0e7dbad1e9f9c529008db800349b038",
+              "deps": [
+                "npm:@angular/router",
+                "npm:@ngrx/router-store"
+              ]
+            },
+            {
+              "file": "apps/base-nx-v14/src/app/core/store/selectors/index.ts",
+              "hash": "717a9795850d9aeaf4f6b6380aebfeda36efbea7"
+            },
+            {
+              "file": "apps/base-nx-v14/src/app/core/store/selectors/login.selectors.ts",
+              "hash": "ad9c7077750eea26f1e3b1727b023a850b522a18",
+              "deps": [
+                "npm:@ngrx/store"
+              ]
+            },
+            {
+              "file": "apps/base-nx-v14/src/app/core/store/selectors/router.selectors.ts",
+              "hash": "474bdf19cde6ae754fd0c4ed80891299cc131bf5",
+              "deps": [
+                "npm:@ngrx/store",
+                "npm:@ngrx/router-store"
+              ]
+            },
+            {
+              "file": "apps/base-nx-v14/src/app/core/utils/storage.ts",
+              "hash": "0e905cbfb2a299b21ae4883bc281d6430d2e4576"
+            },
+            {
+              "file": "apps/base-nx-v14/src/app/layout/footer/footer.component.html",
+              "hash": "28c0d7d7953597eee1262e3bc020db39d10b3a37"
+            },
+            {
+              "file": "apps/base-nx-v14/src/app/layout/footer/footer.component.scss",
+              "hash": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+            },
+            {
+              "file": "apps/base-nx-v14/src/app/layout/footer/footer.component.spec.ts",
+              "hash": "a3c4af95bf7d6bbcfb9c22cce9d891c586f43991",
+              "deps": [
+                "npm:@angular/core"
+              ]
+            },
+            {
+              "file": "apps/base-nx-v14/src/app/layout/footer/footer.component.ts",
+              "hash": "88986c5faedb61f706a8bbfa484c34386b40488c",
+              "deps": [
+                "npm:@angular/core"
+              ]
+            },
+            {
+              "file": "apps/base-nx-v14/src/app/layout/header/header.component.html",
+              "hash": "6cfdfda6e578cb8a3d173361b02ebaa1021ee401"
+            },
+            {
+              "file": "apps/base-nx-v14/src/app/layout/header/header.component.scss",
+              "hash": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+            },
+            {
+              "file": "apps/base-nx-v14/src/app/layout/header/header.component.spec.ts",
+              "hash": "381e8e80c542fbd3d08c6668e060d0a5c582367a",
+              "deps": [
+                "npm:@angular/core"
+              ]
+            },
+            {
+              "file": "apps/base-nx-v14/src/app/layout/header/header.component.ts",
+              "hash": "819f5627b1f69547c652979c97c1c8fc24560529",
+              "deps": [
+                "npm:@angular/core",
+                "npm:@angular/router"
+              ]
+            },
+            {
+              "file": "apps/base-nx-v14/src/app/layout/index.ts",
+              "hash": "10b953442f31e68f8e531b699ac5a8dc65a49aa7"
+            },
+            {
+              "file": "apps/base-nx-v14/src/app/layout/main-layout/main-layout.component.html",
+              "hash": "59798b0324f07e7046cf1276c10d722cbd7e7c24"
+            },
+            {
+              "file": "apps/base-nx-v14/src/app/layout/main-layout/main-layout.component.scss",
+              "hash": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+            },
+            {
+              "file": "apps/base-nx-v14/src/app/layout/main-layout/main-layout.component.spec.ts",
+              "hash": "4acee9fdce3d07f5c93bb4ecda8d2a423b52fda9",
+              "deps": [
+                "npm:@angular/core"
+              ]
+            },
+            {
+              "file": "apps/base-nx-v14/src/app/layout/main-layout/main-layout.component.ts",
+              "hash": "6e2a1c93c65ef4b4636469e884e6d1b4a476a0f1",
+              "deps": [
+                "npm:@angular/core"
+              ]
+            },
+            {
+              "file": "apps/base-nx-v14/src/app/layout/sidebar/sidebar.component.html",
+              "hash": "52a8ffc1522989c6fba78624fcdf2370ddaff7c5"
+            },
+            {
+              "file": "apps/base-nx-v14/src/app/layout/sidebar/sidebar.component.scss",
+              "hash": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+            },
+            {
+              "file": "apps/base-nx-v14/src/app/layout/sidebar/sidebar.component.spec.ts",
+              "hash": "1f932e2071a4ec16348427061d94029a0d3db8f3",
+              "deps": [
+                "npm:@angular/core"
+              ]
+            },
+            {
+              "file": "apps/base-nx-v14/src/app/layout/sidebar/sidebar.component.ts",
+              "hash": "263546057ad5de386db56410fdc4822acea40bb9",
+              "deps": [
+                "npm:@angular/core"
+              ]
+            },
+            {
+              "file": "apps/base-nx-v14/src/app/pages/auth/auth-routing.module.ts",
+              "hash": "578ff0dca599453d724f504216c88fa2e427daab",
+              "deps": [
+                "npm:@angular/router"
+              ]
+            },
+            {
+              "file": "apps/base-nx-v14/src/app/pages/auth/login-sign-in/login-sign-in.component.html",
+              "hash": "5cc14d7906137ce45702abfbd6cbc9b0956bbeb5"
+            },
+            {
+              "file": "apps/base-nx-v14/src/app/pages/auth/login-sign-in/login-sign-in.component.scss",
+              "hash": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+            },
+            {
+              "file": "apps/base-nx-v14/src/app/pages/auth/login-sign-in/login-sign-in.component.spec.ts",
+              "hash": "b5fc9c61b4b578d51ccc4ba361a112600c6150a2",
+              "deps": [
+                "npm:@angular/core"
+              ]
+            },
+            {
+              "file": "apps/base-nx-v14/src/app/pages/auth/login-sign-in/login-sign-in.component.ts",
+              "hash": "53240c27e2d1687ac3076ff5aa3319977589645e",
+              "deps": [
+                "npm:@angular/core"
+              ]
+            },
+            {
+              "file": "apps/base-nx-v14/src/app/pages/auth/register/register.component.html",
+              "hash": "6b0ba2e4dbc55b9a7d858e0e64109972d71df3d2"
+            },
+            {
+              "file": "apps/base-nx-v14/src/app/pages/auth/register/register.component.scss",
+              "hash": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+            },
+            {
+              "file": "apps/base-nx-v14/src/app/pages/auth/register/register.component.spec.ts",
+              "hash": "f97553378f7675c058fd84120fe7a60c0e51cf84",
+              "deps": [
+                "npm:@angular/core"
+              ]
+            },
+            {
+              "file": "apps/base-nx-v14/src/app/pages/auth/register/register.component.ts",
+              "hash": "27662e0ecaed06e813c4e6e50b0601d446d64575",
+              "deps": [
+                "npm:@angular/core"
+              ]
+            },
+            {
+              "file": "apps/base-nx-v14/src/app/pages/Errors/not-found/not-found.component.html",
+              "hash": "80710204f06aaf3ca0a353def20b0bd501ff40a3"
+            },
+            {
+              "file": "apps/base-nx-v14/src/app/pages/Errors/not-found/not-found.component.scss",
+              "hash": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+            },
+            {
+              "file": "apps/base-nx-v14/src/app/pages/Errors/not-found/not-found.component.spec.ts",
+              "hash": "9d41c99a6626760932c899d5950ca95fcb4171f3",
+              "deps": [
+                "npm:@angular/core"
+              ]
+            },
+            {
+              "file": "apps/base-nx-v14/src/app/pages/Errors/not-found/not-found.component.ts",
+              "hash": "7cb4124f1c1d03a20010333988e47527fa655175",
+              "deps": [
+                "npm:@angular/core"
+              ]
+            },
+            {
+              "file": "apps/base-nx-v14/src/app/share/components/index.ts",
+              "hash": "3b2d17fb75dea48041e3af9579838ac43fdac482"
+            },
+            {
+              "file": "apps/base-nx-v14/src/app/share/components/loading/loading.component.html",
+              "hash": "d297614d9033095f161352e911b0c3fd10391392"
+            },
+            {
+              "file": "apps/base-nx-v14/src/app/share/components/loading/loading.component.scss",
+              "hash": "b6ac41379b200a0f4fa21ba1a75c2df89032e9e8"
+            },
+            {
+              "file": "apps/base-nx-v14/src/app/share/components/loading/loading.component.spec.ts",
+              "hash": "7aacfad91a0dc2e29caacf9cca79ebe5485fdd2e",
+              "deps": [
+                "npm:@angular/core"
+              ]
+            },
+            {
+              "file": "apps/base-nx-v14/src/app/share/components/loading/loading.component.ts",
+              "hash": "8a392b0a20e3e1a87367ceac5013fde1408abe16",
+              "deps": [
+                "npm:@angular/core",
+                "npm:@angular/common"
+              ]
+            },
+            {
+              "file": "apps/base-nx-v14/src/app/share/directives/index.ts",
+              "hash": "c761afff920827978b91318a7e614c1dd8e7ab9b"
+            },
+            {
+              "file": "apps/base-nx-v14/src/app/share/interface/global.response.ts",
+              "hash": "5a6d9214b2f1753b01b3cec9ea14077d6a3770af"
+            },
+            {
+              "file": "apps/base-nx-v14/src/app/share/interface/index.ts",
+              "hash": "37dcc100ee8da1d22bfb0521a1f0c2ea2d76117b"
+            },
+            {
+              "file": "apps/base-nx-v14/src/app/share/modules/material.modules.ts",
+              "hash": "ac619ecd401952399f29b617e66fb5c853c44e4d",
+              "deps": [
+                "npm:@angular/core",
+                "npm:@angular/common",
+                "npm:@angular/material",
+                "npm:@angular/forms",
+                "npm:@angular/material-moment-adapter",
+                "npm:@angular/cdk"
+              ]
+            },
+            {
+              "file": "apps/base-nx-v14/src/app/share/pipes/index.ts",
+              "hash": "925c3a5ff51ca1342d5664160f569997f88166aa"
+            },
+            {
+              "file": "apps/base-nx-v14/src/app/share/share.module.ts",
+              "hash": "4d0ead1c6d0accf006c2b65c0a506229c29bc2e1",
+              "deps": [
+                "npm:@angular/core",
+                "npm:@angular/common",
+                "npm:@angular/platform-browser"
+              ]
+            },
+            {
+              "file": "apps/base-nx-v14/src/app/share/translate/appInitializerFactory.ts",
+              "hash": "de7ed650b82399452150273d8774814ac20a78d5",
+              "deps": [
+                "npm:@angular/core",
+                "npm:@angular/common"
+              ]
+            },
+            {
+              "file": "apps/base-nx-v14/src/app/share/translate/index.ts",
+              "hash": "3480f0ce2ede7137dfc2098415db50820508ac10"
+            },
+            {
+              "file": "apps/base-nx-v14/src/app/share/translate/multiLanguageService.ts",
+              "hash": "92c5270d73e20b00ce2d6040462c7daacc3c18fc",
+              "deps": [
+                "npm:@angular/core",
+                "npm:rxjs",
+                "npm:@ngx-translate/core",
+                "npm:@angular/common"
+              ]
+            },
+            {
+              "file": "apps/base-nx-v14/src/app/share/translate/translate.factory.ts",
+              "hash": "b2c5c2adee39653a3a05a249dafd32bb41b6d7f1",
+              "deps": [
+                "npm:@angular/common",
+                "npm:@ngx-translate/http-loader"
+              ]
+            },
+            {
+              "file": "apps/base-nx-v14/src/app/share/validators/index.ts",
+              "hash": "c76d82b401a640ed89f404481b3b6e618ed62200"
+            },
+            {
+              "file": "apps/base-nx-v14/src/assets/.gitkeep",
+              "hash": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+            },
+            {
+              "file": "apps/base-nx-v14/src/assets/i18n/en.json",
+              "hash": "da925b4df3c451825c6ce30c8cdf5dd01425d897"
+            },
+            {
+              "file": "apps/base-nx-v14/src/assets/i18n/vi.json",
+              "hash": "8bb69f7fc17700b0af1bc7ce5641d9d5dd064253"
+            },
+            {
+              "file": "apps/base-nx-v14/src/assets/styles/sources/_base.scss",
+              "hash": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+            },
+            {
+              "file": "apps/base-nx-v14/src/assets/styles/sources/_reset.scss",
+              "hash": "5493ac37fa9e2c0c7ad0da5a18c74650d8b1a6fb"
+            },
+            {
+              "file": "apps/base-nx-v14/src/assets/styles/sources/_typography.scss",
+              "hash": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+            },
+            {
+              "file": "apps/base-nx-v14/src/assets/styles/sources/_variables.scss",
+              "hash": "9271909b1ae724da5552dc8126742eebcfb672a7"
+            },
+            {
+              "file": "apps/base-nx-v14/src/assets/styles/theme.scss",
+              "hash": "9d998f52eb89adef8caa36a54be570241bf99502"
+            },
+            {
+              "file": "apps/base-nx-v14/src/environments/environment.dev.ts",
+              "hash": "d1163eefd457ee0b3d86ba55350ef611307f13d9"
+            },
+            {
+              "file": "apps/base-nx-v14/src/environments/environment.prod.ts",
+              "hash": "5864f143a8d516e6d950ea9fd5cbdc28f0f5823f"
+            },
+            {
+              "file": "apps/base-nx-v14/src/environments/environment.staging.ts",
+              "hash": "d1163eefd457ee0b3d86ba55350ef611307f13d9"
+            },
+            {
+              "file": "apps/base-nx-v14/src/environments/environment.ts",
+              "hash": "83aeafd755e242a4af8927ce4e12e833962bdfb7"
+            },
+            {
+              "file": "apps/base-nx-v14/src/favicon.ico",
+              "hash": "997406ad22c29aae95893fb3d666c30258a09537"
+            },
+            {
+              "file": "apps/base-nx-v14/src/index.html",
+              "hash": "60a9488bba478eb3809277e12c8aca877db6508a"
+            },
+            {
+              "file": "apps/base-nx-v14/src/main.ts",
+              "hash": "e557380bada1dc96fa68cab4a283b5c347f15d48",
+              "deps": [
+                "npm:@angular/core",
+                "npm:@angular/platform-browser",
+                "npm:@angular/router"
+              ]
+            },
+            {
+              "file": "apps/base-nx-v14/src/polyfills.ts",
+              "hash": "429bb9ef2d3400363c014fa434775b0f482f6bea",
+              "deps": [
+                "npm:zone.js"
+              ]
+            },
+            {
+              "file": "apps/base-nx-v14/src/public/models/auth/auth.model.ts",
+              "hash": "0286cfee2a57e4912693eeab19abf7cec7ab2211"
+            },
+            {
+              "file": "apps/base-nx-v14/src/public/models/auth/login-form.model.ts",
+              "hash": "f327f50a506a60f8c463020e44f64bff12b3e98d"
+            },
+            {
+              "file": "apps/base-nx-v14/src/public/models/auth/token.model.ts",
+              "hash": "a6b6656037c8c3b109a72b93ccb116b38644cd6d"
+            },
+            {
+              "file": "apps/base-nx-v14/src/public/models/index.ts",
+              "hash": "b5ceac8f81b86a340ddc6186e0cc110b15562359"
+            },
+            {
+              "file": "apps/base-nx-v14/src/styles.scss",
+              "hash": "da06b40b276eeef35da4b7829c96e1ad9a951ae9"
+            },
+            {
+              "file": "apps/base-nx-v14/src/test-setup.ts",
+              "hash": "1100b3e8a6ed08f4b5c27a96471846d57023c320",
+              "deps": [
+                "npm:jest-preset-angular"
+              ]
+            },
+            {
+              "file": "apps/base-nx-v14/tsconfig.app.json",
+              "hash": "915ae8b2fbf62700c36dfb72cfd6252d9dae8d0a"
+            },
+            {
+              "file": "apps/base-nx-v14/tsconfig.editor.json",
+              "hash": "20c4afdbf437457984afcb236d4b5e588aec858a"
+            },
+            {
+              "file": "apps/base-nx-v14/tsconfig.json",
+              "hash": "c087704cf8e073d74dfecd1be87a554abd3c603c"
+            },
+            {
+              "file": "apps/base-nx-v14/tsconfig.spec.json",
+              "hash": "c5db02778f96a2a200d787c0a7b376fe0d6c36f7"
+            }
+          ]
+        }
+      }
+    },
+    "dependencies": {
+      "base-nx-v14-e2e": [
+        {
+          "source": "base-nx-v14-e2e",
+          "target": "base-nx-v14",
+          "type": "implicit"
+        }
+      ],
+      "base-nx-v14": []
+    }
+  },
+  "affectedProjects": [
+    "base-nx-v14",
+    "base-nx-v14-e2e"
+  ],
+  "criticalPath": [
+    "base-nx-v14",
+    "base-nx-v14-e2e"
+  ]
+}
