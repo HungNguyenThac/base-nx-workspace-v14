@@ -17,11 +17,16 @@
           "apps/base-nx-v14/src/favicon.ico",
           "apps/base-nx-v14/src/assets"
         ],
+        "stylePreprocessorOptions": {
+          "includePaths": ["src/assets/styles"]
+        },
         "styles": [
           "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
           "./node_modules/ngx-toastr/toastr.css",
-          "apps/base-nx-v14/src/styles.scss"],
-        "scripts": []
+          "apps/base-nx-v14/src/styles.scss"
+        ],
+        "scripts": [],
+        "allowedCommonJsDependencies": ["lodash", "ngrx-store-logger", "moment"]
       },
       "configurations": {
         "production": {
